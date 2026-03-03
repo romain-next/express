@@ -1,7 +1,9 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config()
 
-const sequelizeInstance = new Sequelize(
+const sequelizeInstance = process.env.NODE_ENV === 'test' 
+  ? new Sequelize('sqlite::memory:')
+  :  new Sequelize(
     process.env.DB_DATABASE,
     process.env.DB_USERNAME,
     process.env.DB_PASSWORD,

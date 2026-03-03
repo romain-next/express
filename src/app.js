@@ -64,12 +64,14 @@ app.delete('/users/:id', async (req, res) => {
   res.status(200).json({ status: 'ok', data:userDeleted })
 })
 
-connectDB().then(() => {
-  sequelizeInstance.sync();
-  app.listen(PORT, () =>
-    console.log(`Serveur démarré sur http://localhost:${PORT}`),
-  );
-});
+if (process.env.NODE_ENV !== 'test') {
+  connectDB().then(() => {
+    sequelizeInstance.sync();
+    app.listen(PORT, () =>
+      console.log(`Serveur démarré sur http://localhost:${PORT}`),
+    );
+  });
+}
 
 
 module.exports = app
