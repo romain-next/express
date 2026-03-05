@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./src/app.js",
-    "test": "NODE_ENV=test jest --runInBand"
+    "test": "NODE_ENV=test jest --runInBand",
+    "lint": "eslint \"{src,tests}/**/*.js\" --fix"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,9 @@
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.2",
+    "globals": "^17.4.0",
     "jest": "^30.2.0",
     "sqlite3": "^5.1.7",
     "supertest": "^7.2.2"
